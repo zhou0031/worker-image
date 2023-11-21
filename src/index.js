@@ -36,8 +36,9 @@ async function handleRequest(request){
 	const requestHeaders = {
 		'User-Agent': 'Your-Application-User-Agent',
 		'Referer': 'https://310soft.com',
-		'Cache-Control': 'public, max-age=86400', // 24 hours in seconds
-		'Expires': new Date(Date.now() + 86400000).toUTCString(), // 24 hours in milliseconds
+		'Cache-Control': 'public, max-age=31536000, immutable', // 1 year in seconds
+		'Expires': new Date(Date.now() + 31536000000).toUTCString(), // 1 year in milliseconds
+		'Referrer-Policy': 'strict-origin-when-cross-origin',
 	  };
 
 	  const requestInit = {
