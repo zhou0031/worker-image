@@ -1,22 +1,6 @@
 export default {
 	async fetch(request, env, ctx) {
-		/*
-		const url = new URL(request.url);
-		const searchParams = url.searchParams;
-		const accessToken = searchParams.get('access_token');
 		
-		if(!accessToken){
-			return new Response("Token Missing",{
-				status:401
-			})
-		}
-		
-		const isValid=totp.check(accessToken,env.SECRET)
-		if(!isValid)
-			return new Response("Invalid Token: "+accessToken,{
-			status:401
-		})
-		*/
 		return await handleRequest(request);
 	},
 };
