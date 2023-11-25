@@ -5,7 +5,6 @@ export default {
 	},
 };
 
-
 async function handleRequest(request){
 	const imageUrlParam = new URL(request.url).searchParams.get('url');
 		
