@@ -36,7 +36,7 @@ async function handleRequest(request){
 		if (response.ok) {
 		 return new Response(await response.arrayBuffer())
 		} else {
-		  console.error('Tile request failed with status:', response.status);
+		  console.error('Request failed with status:', response.status);
 		}
 	  } catch (error) {
 		console.error('Error during tile request:', error);
