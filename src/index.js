@@ -17,7 +17,7 @@ async function handleRequest(request){
 	}
 
 	const requestHeaders = {
-		'User-Agent': 'Your-Application-User-Agent',
+		'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36',
 		'Referer': 'https://310soft.com',
 		'Cache-Control': 'public, max-age=31536000, immutable', // 1 year in seconds
 		'Expires': new Date(Date.now() + 31536000000).toUTCString(), // 1 year in milliseconds
