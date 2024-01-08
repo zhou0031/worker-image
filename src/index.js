@@ -1,7 +1,22 @@
+import {error,json,Router} from 'itty-router'
+
+const router = Router()
+
+async function auth(request,env,ctx){
+	const authResponse = await env.auth.fetch(request.clone())
+	if (authResponse.status !== 200) 
+		return error(401,"Invalid request")	
+}
+
+
+router
+	.all('*',auth)
+	.get("/",handleRequest)
+
 export default {
 	async fetch(request, env, ctx) {
-		
-		return await handleRequest(request);
+		return router.handle(request,env,ctx).then(json).catch(error)
+		//return await handleRequest(request);
 	},
 };
 
