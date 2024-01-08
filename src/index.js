@@ -2,21 +2,21 @@ import {error,json,Router} from 'itty-router'
 
 const router = Router()
 
-async function auth(request,env,ctx){
-	const authResponse = await env.auth.fetch(request.clone())
-	if (authResponse.status !== 200) 
-		return error(401,"Invalid request")	
+async function ipAuth(request,env,ctx){
+	const allowed_ipv4 = await env.allowed.get("ipv4");
+	const allowed_ipv6 = await env.allowed.get("ipv6");
+	const trueClientIp = request.headers.get("CF-Connecting-IP");
+	if (trueClientIp !== allowed_ipv4 && trueClientIp !== allowed_ipv6)
+	  return new Response("Invalid Request", { status: 403 });
 }
 
-
 router
-	.all('*',auth)
+	.all('*',ipAuth)
 	.get("/",handleRequest)
 
 export default {
 	async fetch(request, env, ctx) {
 		return router.handle(request,env,ctx).then(json).catch(error)
-		//return await handleRequest(request);
 	},
 };
 
