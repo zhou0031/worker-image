@@ -11,7 +11,7 @@ async function ipAuth(request,env,ctx){
 }
 
 router
-	.all('*',ipAuth)
+	//.all('*',ipAuth)
 	.get("/",handleRequest)
 
 export default {
